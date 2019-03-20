@@ -29,7 +29,7 @@ class AnatomogramDemo extends React.Component {
   constructor(props) {
     super(props)
 
-    const selectedSpecies = allSpecies.includes(`homo_sapiens`) ? `homo_sapiens` : allSpecies[0]
+    const selectedSpecies = allSpecies.includes(`kidney`) ? `kidney` : allSpecies[0]
 
     this.state = {
       selectedSpecies: selectedSpecies,
@@ -82,7 +82,9 @@ class AnatomogramDemo extends React.Component {
         <div className={`row`}>
           <div className={`small-3 small-centered columns`}>
             <select value={this.state.selectedSpecies} onChange={this._handleSelectOnChange}>
-              {[...allSpecies, `foobar`].map((species) => <option key={species} value={species}>{capitalizeFirstLetter(species.replace(`_`, ` `))}</option>)}
+              {[`test`, ...allSpecies].map((species) => {
+                return <option key={species} value={species}>{capitalizeFirstLetter(species.replace(`_`, ` `))}</option>
+              })}
             </select>
           </div>
         </div>

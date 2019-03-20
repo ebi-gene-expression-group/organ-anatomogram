@@ -55,7 +55,8 @@ const addColoringScheme  = compose(
     selectColour: `purple`,
     showOpacity: 0.4,
     highlightOpacity: 0.4,
-    selectOpacity: 0.4}),
+    //selectOpacity: 0.4
+  }),
   withPropsOnChange(negate(isEqual),
     props => ({idsWithMarkup: idsWithMarkupAccordingToCurrentColoringScheme(props)})
   )

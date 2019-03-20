@@ -1,5 +1,56 @@
 [
   {
+    "filename": "kidney.kidney.svg",
+    "species": "kidney",
+    "view": "kidney",
+    "ids": [
+      "UBERON_0001225",
+      "UBERON_0000362",
+      "UBERON_0004200",
+      "UBERON_0001224",
+      "UBERON_0000056",
+      "UBERON_0001285"
+    ]
+  },
+  {
+    "filename": "kidney.glomerulus.svg",
+    "species": "kidney",
+    "view": "glomerulus",
+    "ids": [
+      "UBERON_0002319",
+      "UBERON_0004135",
+      "UBERON_0002335",
+      "UBERON_0001287",
+      "UBERON_0004189",
+      "UBERON_0004212",
+      "UBERON_0005750",
+      "UBERON_0001230",
+      "UBERON_0004639",
+      "UBERON_0004640",
+      "CL_0000653",
+      "CL_0002188",
+      "CL_1000452"
+    ]
+  },
+  {
+    "filename": "kidney.nephron.svg",
+    "species": "kidney",
+    "view": "nephron",
+    "ids": [
+      "UBERON_0000074",
+      "UBERON_0001287",
+      "UBERON_0001288",
+      "UBERON_0001292",
+      "UBERON_0001232",
+      "UBERON_0001288",
+      "UBERON_0001230",
+      "UBERON_0009202",
+      "UBERON_0009091",
+      "UBERON_0004639",
+      "UBERON_0004640"
+    ]
+  },
+  {
     "filename": "anolis_carolinensis.svg",
     "species": "anolis_carolinensis",
     "view": "",

@@ -62,7 +62,7 @@ const initialiseSvgElements = (getSvgElementById, {idsWithMarkup, onMouseOver,on
       const ids = a[1].map(t => t[1])
       //Given an element and its ids, we take the first element of the idsWithMarkup array that is one of the ids
       const markupNormalAndUnderFocus = idsWithMarkup.find(m => ids.includes(m.id))
-
+console.log(element)
       paintSvgElement(element, markupNormalAndUnderFocus.markupNormal)
 
       registerEvent(element, `mouseover`, markupNormalAndUnderFocus.markupUnderFocus, onMouseOver.bind(this, ids))
