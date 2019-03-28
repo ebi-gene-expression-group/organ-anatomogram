@@ -48,7 +48,7 @@ const registerEvent = (element, eventType, elementMarkup, callback) => {
 }
 
 
-const initialiseSvgElements = (getSvgElementById, {idsWithMarkup, onMouseOver,onMouseOut,onClick}) => {
+const initialiseSvgElements = (getSvgElementById, {idsWithMarkup, onMouseOver, onMouseOut, onClick, onChangeView, selectIds}) => {
   //More than one id can correspond to an element - see the svg "use" elements
   groupIntoPairs(
     idsWithMarkup
@@ -62,12 +62,13 @@ const initialiseSvgElements = (getSvgElementById, {idsWithMarkup, onMouseOver,on
       const ids = a[1].map(t => t[1])
       //Given an element and its ids, we take the first element of the idsWithMarkup array that is one of the ids
       const markupNormalAndUnderFocus = idsWithMarkup.find(m => ids.includes(m.id))
-console.log(element)
       paintSvgElement(element, markupNormalAndUnderFocus.markupNormal)
 
       registerEvent(element, `mouseover`, markupNormalAndUnderFocus.markupUnderFocus, onMouseOver.bind(this, ids))
       registerEvent(element, `mouseout`, markupNormalAndUnderFocus.markupNormal, onMouseOut.bind(this, ids))
-      registerEvent(element, `click`, {}, onClick.bind(this, ids))
+      element && element.attributes.hasOwnProperty(`title`) && markupNormalAndUnderFocus.onClick && selectIds.length!==0 ?
+        registerEvent(element, `click`, onChangeView(element.attributes.title.value), onClick.bind(this, ids)) :
+        registerEvent(element, `click`, markupNormalAndUnderFocus.onClick, onClick.bind(this, ids))
     })
 }
 
