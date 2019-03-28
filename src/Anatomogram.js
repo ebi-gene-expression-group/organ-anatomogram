@@ -17,6 +17,7 @@ class Anatomogram extends React.Component {
 
   _switchAnatomogramView(anatomogramView) {
     this.setState({ selectedView: anatomogramView })
+    this.props.clearSelectIds()
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -42,6 +43,7 @@ class Anatomogram extends React.Component {
           <AnatomogramSvg
             atlasUrl={this.props.atlasUrl}
             {...this.props}
+            onChangeView={this._switchAnatomogramView}
             selectedView={this.state.selectedView} />
         </div>
     )
@@ -50,7 +52,8 @@ class Anatomogram extends React.Component {
 
 Anatomogram.propTypes = {
   atlasUrl: PropTypes.string,
-  species: PropTypes.string.isRequired
+  species: PropTypes.string.isRequired,
+  clearSelectIds: PropTypes.func.isRequired
 }
 
 Anatomogram.defaultProps = {
