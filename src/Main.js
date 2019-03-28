@@ -18,20 +18,28 @@ const idsWithMarkupAccordingToCurrentColoringScheme = ({
   highlightIds,
   highlightColour,
   highlightOpacity,
-  selectIds,
+  selectIds, 
+  selectAllIds,
   selectColour,
   selectOpacity}) => {
-  const uniqueShowIds = arrayDifference(showIds, [...highlightIds, ...selectIds])
-  const uniqueHighlightIds = arrayDifference(highlightIds, selectIds)
-
+  const uniqueShowIds = arrayDifference(showIds, [...highlightIds, ...selectIds, ...selectAllIds])
+  const uniqueHighlightIds = arrayDifference(highlightIds, selectIds, selectAllIds)
 
   //Given an element and its ids, we take the first element of this array having one of the ids
   return [].concat(
-    selectIds.map(id => ({
-      id,
-      markupNormal: elementMarkup(selectColour, selectOpacity),
-      markupUnderFocus: elementMarkup(selectColour, selectOpacity+0.2)
-    })),
+    selectIds.length !== 0 ?
+      selectIds.map(id => ({
+        id,
+        markupNormal: elementMarkup(selectColour, selectOpacity),
+        markupUnderFocus: elementMarkup(selectColour, selectOpacity+0.2),
+        onClick: showIds=[]
+      })) :
+      selectAllIds.map(id => ({
+        id,
+        markupNormal: elementMarkup(selectColour, selectOpacity),
+        markupUnderFocus: elementMarkup(selectColour, selectOpacity+0.2),
+        onClick: showIds=[]
+      })),
     uniqueHighlightIds.map(id => ({
       id,
       markupNormal: elementMarkup(highlightColour, highlightOpacity),
