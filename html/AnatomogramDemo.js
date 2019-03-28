@@ -36,13 +36,16 @@ class AnatomogramDemo extends React.Component {
       allIds: getAllIds(selectedSpecies),
       showIds: [],
       highlightIds: [],
-      selectIds: []
+      selectIds: [],
+      selectAllIds: []
     }
 
     this._handleSelectOnChange = this._handleSelectOnChange.bind(this)
     this._handleCheckboxOnChange = this._handleCheckboxOnChange.bind(this)
     this._handleOnClick = this._handleOnClick.bind(this)
     this._addRemoveFromSelectIds = this._addRemoveFromSelectIds.bind(this)
+    this._clearSelectIds = this._clearSelectIds.bind(this)
+
   }
 
   _handleSelectOnChange(event) {
@@ -67,6 +70,7 @@ class AnatomogramDemo extends React.Component {
     this.setState({
       [stateField]: allOrNone ? Array.from(this.state.allIds) : []
     })
+    if(stateField===`selectAllIds`) {this.setState({selectIds: []})}
   }
 
   _addRemoveFromSelectIds(ids) {
@@ -76,6 +80,13 @@ class AnatomogramDemo extends React.Component {
     })
   }
 
+  _clearSelectIds(){
+    this.setState({
+      showIds: [],
+      selectIds: [],
+      highlightIds:[]
+    })
+  }
   render() {
     return (
       <div className={`row`}>
@@ -97,6 +108,8 @@ class AnatomogramDemo extends React.Component {
               showIds={this.state.showIds}
               highlightIds={this.state.highlightIds}
               selectIds={this.state.selectIds}
+              selectAllIds={this.state.selectAllIds}
+              clearSelectIds={this._clearSelectIds}
               onClick={this._addRemoveFromSelectIds} />
           </div>
 
@@ -111,8 +124,8 @@ class AnatomogramDemo extends React.Component {
                 <button className={`button`} onClick={() => {this._handleOnClick(false, `highlightIds`)}}>Unhighlight all</button>
               </div>
               <div className={`small-4 columns`}>
-                <button className={`button`} onClick={() => {this._handleOnClick(true, `selectIds`)}}>Select all</button>
-                <button className={`button`} onClick={() => {this._handleOnClick(false, `selectIds`)}}>Unselect all</button>
+                <button className={`button`} onClick={() => {this._handleOnClick(true, `selectAllIds`)}}>Select all</button>
+                <button className={`button`} onClick={() => {this._handleOnClick(false, `selectAllIds`)}}>Unselect all</button>
               </div>
             </div>
 
@@ -139,7 +152,7 @@ class AnatomogramDemo extends React.Component {
                   <input type={`checkbox`}
                     name={`selectIds`} value={id}
                     onChange={(e) => {this._handleCheckboxOnChange(e, `selectIds`)}}
-                    checked={this.state.selectIds.includes(id)}/>
+                    checked={this.state.selectAllIds.includes(id) || this.state.selectIds.includes(id)}/>
                   <label>{id}</label>
                 </div>)}
             </div>
