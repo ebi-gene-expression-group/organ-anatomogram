@@ -8,7 +8,7 @@ import {groupBy} from 'lodash'
 
 const groupIntoPairs = (arr, f) => Object.entries(groupBy(arr, f))
 
-const getSvgElementById = (svgDomNode) => {
+const getSvgElementById = (svgDomNode, initShowIds) => {
   const getEfoLayerGroup = (svgDomNode) => {
     const svgGroups = svgDomNode.getElementsByTagName(`g`)
     for (let i = 0 ; i < svgGroups.length ; i++) {
@@ -17,6 +17,7 @@ const getSvgElementById = (svgDomNode) => {
       }
     }
   }
+
 
   const efoLayerGroup = getEfoLayerGroup(svgDomNode)
 
@@ -34,6 +35,8 @@ const getSvgElementById = (svgDomNode) => {
       }
     }
   }
+  Array.from(efoLayerGroup.children).filter(path => path.attributes.hasOwnProperty(`title`))[0] &&
+  initShowIds(Array.from(efoLayerGroup.children).filter(path => path.attributes.hasOwnProperty(`title`)).map(link => link.id))
 
   return _getSvgElementById
 }
@@ -41,6 +44,7 @@ const getSvgElementById = (svgDomNode) => {
 const paintSvgElement = (element, elementMarkup) => element && elementMarkup && Object.assign(element.style, elementMarkup)
 
 const registerEvent = (element, eventType, elementMarkup, callback) => {
+
   element && element.addEventListener(eventType, () => {
     paintSvgElement(element, elementMarkup)
     callback()
@@ -50,6 +54,7 @@ const registerEvent = (element, eventType, elementMarkup, callback) => {
 
 const initialiseSvgElements = (getSvgElementById, {idsWithMarkup, onMouseOver, onMouseOut, onClick, onChangeView, selectIds}) => {
   //More than one id can correspond to an element - see the svg "use" elements
+
   groupIntoPairs(
     idsWithMarkup
       .map(e=>e.id)
@@ -62,11 +67,18 @@ const initialiseSvgElements = (getSvgElementById, {idsWithMarkup, onMouseOver, o
       const ids = a[1].map(t => t[1])
       //Given an element and its ids, we take the first element of the idsWithMarkup array that is one of the ids
       const markupNormalAndUnderFocus = idsWithMarkup.find(m => ids.includes(m.id))
-      paintSvgElement(element, markupNormalAndUnderFocus.markupNormal)
+
+      element && element.attributes.hasOwnProperty(`title`) && markupNormalAndUnderFocus.markupLink ?
+        paintSvgElement(element, markupNormalAndUnderFocus.markupLink) :
+        paintSvgElement(element, markupNormalAndUnderFocus.markupNormal)
 
       registerEvent(element, `mouseover`, markupNormalAndUnderFocus.markupUnderFocus, onMouseOver.bind(this, ids))
-      registerEvent(element, `mouseout`, markupNormalAndUnderFocus.markupNormal, onMouseOut.bind(this, ids))
-      element && element.attributes.hasOwnProperty(`title`) && markupNormalAndUnderFocus.onClick && selectIds.length!==0 ?
+
+      element && element.attributes.hasOwnProperty(`title`) && markupNormalAndUnderFocus.markupLink ?
+        registerEvent(element, `mouseout`, markupNormalAndUnderFocus.markupLink, onMouseOut.bind(this, ids)) :
+        registerEvent(element, `mouseout`, markupNormalAndUnderFocus.markupNormal, onMouseOut.bind(this, ids))
+
+      element && element.attributes.hasOwnProperty(`title`) && markupNormalAndUnderFocus.onClick && selectIds.length !== 0 ?
         registerEvent(element, `click`, onChangeView(element.attributes.title.value), onClick.bind(this, ids)) :
         registerEvent(element, `click`, markupNormalAndUnderFocus.onClick, onClick.bind(this, ids))
     })
@@ -90,7 +102,7 @@ const AnatomogramSvg = (props) =>
         if (error) {
           console.log(`ReactSVG Error: ${error}`)
         } else {
-          initialiseSvgElements(getSvgElementById(svgDomNode), props)
+          initialiseSvgElements(getSvgElementById(svgDomNode, props.initShowIds), props)
         }
         props.onInjected(error, svgDomNode)
       }}
@@ -111,6 +123,7 @@ AnatomogramSvg.propTypes = {
   onMouseOut: PropTypes.func.isRequired,
   onClick: PropTypes.func.isRequired,
   onInjected: PropTypes.func.isRequired,
+  initShowIds: PropTypes.func.isRequired
 }
 
 AnatomogramSvg.defaultProps = {
