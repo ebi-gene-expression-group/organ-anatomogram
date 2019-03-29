@@ -13,6 +13,7 @@ const elementMarkup = (colour, opacity) => ({fill: colour, opacity: opacity})
 
 const idsWithMarkupAccordingToCurrentColoringScheme = ({
   showIds,
+  linkColour,
   showColour,
   showOpacity,
   highlightIds,
@@ -23,8 +24,8 @@ const idsWithMarkupAccordingToCurrentColoringScheme = ({
   selectColour,
   selectOpacity}) => {
   const uniqueShowIds = arrayDifference(showIds, [...highlightIds, ...selectIds, ...selectAllIds])
-  const uniqueHighlightIds = arrayDifference(highlightIds, selectIds, selectAllIds)
-
+  const uniqueHighlightIds = arrayDifference(highlightIds, [...selectIds, ...selectAllIds])
+console.log(`uniqueShowIds`, uniqueShowIds)
   //Given an element and its ids, we take the first element of this array having one of the ids
   return [].concat(
     selectIds.length !== 0 ?
@@ -48,7 +49,8 @@ const idsWithMarkupAccordingToCurrentColoringScheme = ({
     uniqueShowIds.map(id => ({
       id,
       markupNormal: elementMarkup(showColour, showOpacity),
-      markupUnderFocus: elementMarkup(highlightColour, highlightOpacity+0.2)
+      markupUnderFocus: elementMarkup(highlightColour, highlightOpacity+0.2),
+      markupLink: elementMarkup(linkColour, showOpacity)
     })),
   )
 }
@@ -59,6 +61,7 @@ const addColoringScheme  = compose(
     highlightIds: [],
     selectIds: [],
     showColour: `grey`,
+    linkColour: `blue`,
     highlightColour: `red`,
     selectColour: `purple`,
     showOpacity: 0.4,
