@@ -15,7 +15,9 @@
    version="1.1"
    id="svg10241"
    inkscape:version="0.92.2 5c3e80d, 2017-08-06"
-   sodipodi:docname="Nephron 11 some paths deleted, some left for outline.svg">
+   sodipodi:docname="kidney.nephron.box.svg">
+  <defs
+     id="defs77" />
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -24,15 +26,15 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.98994949"
-     inkscape:cx="126.247"
-     inkscape:cy="309.82466"
+     inkscape:cx="-58.10584"
+     inkscape:cy="107.79415"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1424"
-     inkscape:window-height="937"
-     inkscape:window-x="210"
-     inkscape:window-y="0"
+     inkscape:window-height="856"
+     inkscape:window-x="1326"
+     inkscape:window-y="2"
      inkscape:window-maximized="0"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -100,7 +102,7 @@
            rx="1.3346512"
            ry="0.38993585" />
         <path
-           style="fill:#999999;opacity:0.2;stroke-width:0.24318632"
+           style="opacity:0.2;fill:#999999;stroke-width:0.24318632"
            inkscape:connector-curvature="0"
            id="path275"
            class="st12"
@@ -175,7 +177,8 @@
        sodipodi:nodetypes="ccccccccccccccccsccccccccccc">
       <desc
          id="desc28781">Renal glomerulus</desc>
-      <title>glomerulus</title>
+      <title
+         id="title23">glomerulus</title>
     </path>
     <g
        inkscape:label="UBERON_0001287"
@@ -363,7 +366,7 @@
            id="path34023"
            d="M -0.02407208,18.451378 C -0.09035571,17.619337 0.25654419,15.927083 0.25654419,15.927083 3.1565441,15.027083 5.3,11.6 6.7,8.5 8.1,5.4 9.2411617,1.272965 11.941162,-0.22703501 c 0.6,0.7 1.563059,2.24055251 2.163059,3.04055251 -1.236941,1.9135175 -2.154618,4.2 -3.154618,6.5 -1,2.3000005 -2.7815295,4.6454075 -4.3815295,6.4454075 -1.6,1.8 -4.4921456,3.092453 -6.59214558,2.692453"
            class="st0"
-           inkscape:connector-curvature="0"/>
+           inkscape:connector-curvature="0" />
       </g>
       <g
          id="g34031"
@@ -398,7 +401,7 @@
            id="path34055"
            d="M -0.99859692,22.155789 1.951573,21.056172 c 4.3686546,-1.379251 10.422691,-0.874421 14.312785,2.70779 0.1,0 0.2,0.1 0.3,0.1 0.3,0 0.3,0.1 0,0 0.631773,-0.196199 4.13515,-0.347077 3.062641,-2.678375 -1.5,-0.8 -3.913656,-2.792197 -5.713656,-2.992197 -2.3,-0.3 -5.1179908,-0.714308 -7.7179908,-0.314308 -2.3,0.3 -6.26007802,0.652706 -8.1600782,1.752706 l 0.7479273,2.631634"
            class="st0"
-           inkscape:connector-curvature="0"/>
+           inkscape:connector-curvature="0" />
       </g>
       <g
          id="g34063"
@@ -415,6 +418,16 @@
            sodipodi:nodetypes="cccscccccc" />
       </g>
     </g>
+    <g
+        id="link"
+        title="glomerulus"
+        inkscape:connector-curvature="0"
+        style="fill:none;fill-opacity:1;stroke-width:0.99598545">
+      <path
+          style="opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#000099;stroke-width:0.62336016;stroke-miterlimit:4.4000001;stroke-dasharray:none;stroke-opacity:1"
+          d="m 89.859421,158.71413 h 8.161345 v 5.45152 h -8.161345 z"
+          id="rect884"
+          inkscape:connector-curvature="0" />
+    </g>
   </g>
-
 </svg>

@@ -37,6 +37,7 @@
     "species": "kidney",
     "view": "nephron",
     "ids": [
+      "link",
       "UBERON_0000074",
       "UBERON_0001228",
       "UBERON_0001287",
