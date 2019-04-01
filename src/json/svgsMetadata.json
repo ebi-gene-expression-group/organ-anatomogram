@@ -18,18 +18,15 @@
     "view": "glomerulus",
     "ids": [
       "UBERON_0002319",
-      "UBERON_0004135",
       "UBERON_0002335",
       "UBERON_0001287",
-      "UBERON_0004189",
       "UBERON_0004212",
       "UBERON_0005750",
       "UBERON_0001230",
       "UBERON_0004639",
       "UBERON_0004640",
-      "CL_0000653",
-      "CL_0002188",
-      "CL_1000452"
+      "UBERON_0001292",
+      "CL_0000653"
     ]
   },
   {
