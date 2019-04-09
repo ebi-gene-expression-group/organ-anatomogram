@@ -4,6 +4,7 @@
     "species": "kidney",
     "view": "kidney",
     "ids": [
+      "link_nephron",
       "UBERON_0001225",
       "UBERON_0000362",
       "UBERON_0004200",
@@ -34,7 +35,7 @@
     "species": "kidney",
     "view": "nephron",
     "ids": [
-      "link",
+      "link_glomerulus",
       "UBERON_0000074",
       "UBERON_0001228",
       "UBERON_0001287",

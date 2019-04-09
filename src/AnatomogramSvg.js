@@ -35,8 +35,8 @@ const getSvgElementById = (svgDomNode, initShowIds) => {
       }
     }
   }
-  Array.from(efoLayerGroup.children).filter(path => path.attributes.hasOwnProperty(`title`))[0] &&
-  initShowIds(Array.from(efoLayerGroup.children).filter(path => path.attributes.hasOwnProperty(`title`)).map(link => link.id))
+  Array.from(efoLayerGroup.children).filter(path => path.attributes.hasOwnProperty(`link`))[0] &&
+  initShowIds(Array.from(efoLayerGroup.children).filter(path => path.attributes.hasOwnProperty(`link`)).map(link => link.id))
 
   return _getSvgElementById
 }
@@ -68,18 +68,18 @@ const initialiseSvgElements = (getSvgElementById, {idsWithMarkup, onMouseOver, o
       //Given an element and its ids, we take the first element of the idsWithMarkup array that is one of the ids
       const markupNormalAndUnderFocus = idsWithMarkup.find(m => ids.includes(m.id))
 
-      element && element.attributes.hasOwnProperty(`title`) && markupNormalAndUnderFocus.markupLink ?
+      element && element.attributes.hasOwnProperty(`link`) && markupNormalAndUnderFocus.markupLink ?
         paintSvgElement(element, markupNormalAndUnderFocus.markupLink) :
         paintSvgElement(element, markupNormalAndUnderFocus.markupNormal)
 
       registerEvent(element, `mouseover`, markupNormalAndUnderFocus.markupUnderFocus, onMouseOver.bind(this, ids))
 
-      element && element.attributes.hasOwnProperty(`title`) && markupNormalAndUnderFocus.markupLink ?
+      element && element.attributes.hasOwnProperty(`link`) && markupNormalAndUnderFocus.markupLink ?
         registerEvent(element, `mouseout`, markupNormalAndUnderFocus.markupLink, onMouseOut.bind(this, ids)) :
         registerEvent(element, `mouseout`, markupNormalAndUnderFocus.markupNormal, onMouseOut.bind(this, ids))
 
-      element && element.attributes.hasOwnProperty(`title`) && markupNormalAndUnderFocus.onClick && selectIds.length !== 0 ?
-        registerEvent(element, `click`, onChangeView(element.attributes.title.value), onClick.bind(this, ids)) :
+      element && element.attributes.hasOwnProperty(`link`) && markupNormalAndUnderFocus.onClick && selectIds.length !== 0 ?
+        registerEvent(element, `click`, onChangeView(element.attributes.link.value), onClick.bind(this, ids)) :
         registerEvent(element, `click`, markupNormalAndUnderFocus.onClick, onClick.bind(this, ids))
     })
 }
