@@ -16,6 +16,7 @@
   {
     "filename": "kidney.glomerulus.svg",
     "species": "kidney",
+    "parent": "nephron",
     "view": "glomerulus",
     "ids": [
       "UBERON_0002319",
@@ -33,6 +34,7 @@
   {
     "filename": "kidney.nephron.svg",
     "species": "kidney",
+    "parent": "kidney",
     "view": "nephron",
     "ids": [
       "link_glomerulus",
