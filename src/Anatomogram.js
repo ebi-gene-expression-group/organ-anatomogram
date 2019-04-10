@@ -3,20 +3,33 @@ import PropTypes from 'prop-types'
 
 import Switcher from './Switcher'
 import AnatomogramSvg from './AnatomogramSvg'
-import {getDefaultView, supportedSpecies} from './Assets'
+import {getDefaultView, getParentView, supportedSpecies} from './Assets'
 
 class Anatomogram extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      selectedView: getDefaultView(props.species)
+      selectedView: getDefaultView(props.species),
+      parentView: getParentView(getDefaultView(props.species))
     }
     this._switchAnatomogramView = this._switchAnatomogramView.bind(this)
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.species !== prevProps.species) {
+      this.setState({
+        selectedView: getDefaultView(this.props.species),
+        parentView: getParentView(getDefaultView(this.props.species))
+      })
+    }
+  }
+
   _switchAnatomogramView(anatomogramView) {
-    this.setState({ selectedView: anatomogramView })
+    this.setState({
+      selectedView: anatomogramView,
+      parentView: getParentView(anatomogramView)
+    })
     this.props.clearSelectIds()
   }
 
@@ -31,13 +44,15 @@ class Anatomogram extends React.Component {
   }
 
   render() {
+    const { parentView, selectedView } = this.state
     return (
       supportedSpecies.includes(this.props.species) &&
         <div>
           <Switcher
             atlasUrl={this.props.atlasUrl}
             species={this.props.species}
-            selectedView={this.state.selectedView}
+            parentView={parentView}
+            selectedView={selectedView}
             onChangeView={this._switchAnatomogramView} />
 
           <AnatomogramSvg
@@ -45,7 +60,7 @@ class Anatomogram extends React.Component {
             {...this.props}
             initShowIds={this.props.initShowIds}
             onChangeView={this._switchAnatomogramView}
-            selectedView={this.state.selectedView} />
+            selectedView={selectedView} />
         </div>
     )
   }

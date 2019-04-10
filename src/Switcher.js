@@ -30,21 +30,32 @@ const IconImg = styled.img`
   }
 `
 
-const Switcher = ({atlasUrl, species, selectedView, onChangeView}) =>
+const Switcher = ({atlasUrl, species, parentView, selectedView, onChangeView}) =>
+
   <IconWrapperDiv>
-    {getAnatomogramViews(species).map((view) =>
-      <IconImg
-        key={view}
-        onClick={() => onChangeView(view)}
-        src={resolve(loadIcon(view, selectedView), atlasUrl).toString()} />
-    )}
+    {
+      species === `kidney` ?
+        parentView && <IconImg
+          key={parentView}
+          onClick={() => onChangeView(parentView)}
+          src={resolve(loadIcon(parentView, selectedView), atlasUrl).toString()} />
+        :
+        getAnatomogramViews(species).map((view) =>
+          <IconImg
+            key={view}
+            onClick={() => onChangeView(view)}
+            src={resolve(loadIcon(view, selectedView), atlasUrl).toString()} />
+        )
+    }
+
   </IconWrapperDiv>
 
 Switcher.propTypes = {
   atlasUrl: PropTypes.string.isRequired,
   species: PropTypes.string.isRequired,
   selectedView: PropTypes.string,
-  onChangeView: PropTypes.func.isRequired
+  onChangeView: PropTypes.func.isRequired,
+  parentView: PropTypes.string
 }
 
 Switcher.defaultProps = {
