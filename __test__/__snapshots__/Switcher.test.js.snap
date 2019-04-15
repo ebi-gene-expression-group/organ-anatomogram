@@ -80,6 +80,12 @@ exports[`Anatomogram switcher matches snapshot for hordeum_vulgare 1`] = `
 </div>
 `;
 
+exports[`Anatomogram switcher matches snapshot for kidney 1`] = `
+<div
+  className="sc-bdVaJa kxhnvo"
+/>
+`;
+
 exports[`Anatomogram switcher matches snapshot for macaca_mulatta 1`] = `
 <div
   className="sc-bdVaJa kxhnvo"
