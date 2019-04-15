@@ -37,6 +37,10 @@ const getDefaultView = (species) => {
   }
 }
 
-const getParentView = (view) => svgsMetadata.filter(svgMetadata => svgMetadata.view === view)[0].parent
+const getParentView = (species, view) => {
+  if (supportedSpecies.includes(species)) {
+    return svgsMetadata.filter(svgMetadata => svgMetadata.view === view)[0].parent || null
+  }
+}
 
-export {getAnatomogramViews, getDefaultView, getParentView, supportedSpecies}
+export {getAnatomogramViews, getDefaultView, unique, getParentView, supportedSpecies}

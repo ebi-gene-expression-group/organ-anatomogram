@@ -52,7 +52,7 @@ const registerEvent = (element, eventType, elementMarkup, callback) => {
 }
 
 
-const initialiseSvgElements = (getSvgElementById, {idsWithMarkup, onMouseOver, onMouseOut, onClick, onChangeView, selectIds}) => {
+const initialiseSvgElements = (getSvgElementById, {idsWithMarkup, species, onMouseOver, onMouseOut, onClick, onChangeView, selectIds}) => {
   //More than one id can correspond to an element - see the svg "use" elements
 
   groupIntoPairs(
@@ -79,7 +79,7 @@ const initialiseSvgElements = (getSvgElementById, {idsWithMarkup, onMouseOver, o
         registerEvent(element, `mouseout`, markupNormalAndUnderFocus.markupNormal, onMouseOut.bind(this, ids))
 
       element && element.attributes.hasOwnProperty(`link`) && markupNormalAndUnderFocus.onClick && selectIds.length !== 0 ?
-        registerEvent(element, `click`, onChangeView(element.attributes.link.value), onClick.bind(this, ids)) :
+        registerEvent(element, `click`, onChangeView(species, element.attributes.link.value), onClick.bind(this, ids)) :
         registerEvent(element, `click`, markupNormalAndUnderFocus.onClick, onClick.bind(this, ids))
     })
 }

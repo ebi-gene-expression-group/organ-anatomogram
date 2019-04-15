@@ -37,7 +37,7 @@ const Switcher = ({atlasUrl, species, parentView, selectedView, onChangeView}) =
       species === `kidney` ?
         parentView && <IconImg
           key={parentView}
-          onClick={() => onChangeView(parentView)}
+          onClick={() => onChangeView(species, parentView)}
           src={resolve(loadIcon(parentView, selectedView), atlasUrl).toString()} />
         :
         getAnatomogramViews(species).map((view) =>
