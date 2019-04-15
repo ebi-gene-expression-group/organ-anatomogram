@@ -15,7 +15,7 @@
    version="1.1"
    id="svg10241"
    inkscape:version="0.92.2 5c3e80d, 2017-08-06"
-   sodipodi:docname="kidney.nephron.box.svg">
+   sodipodi:docname="kidney.nephron.svg">
   <defs
      id="defs77" />
   <sodipodi:namedview
@@ -25,16 +25,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.98994949"
-     inkscape:cx="-58.10584"
-     inkscape:cy="107.79415"
+     inkscape:zoom="2.8"
+     inkscape:cx="45.294068"
+     inkscape:cy="244.41428"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="LAYER_EFO"
      showgrid="false"
      inkscape:window-width="1424"
      inkscape:window-height="856"
-     inkscape:window-x="1326"
-     inkscape:window-y="2"
+     inkscape:window-x="121"
+     inkscape:window-y="0"
      inkscape:window-maximized="0"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -48,7 +48,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -171,7 +171,6 @@
        d="m 67.947744,118.42714 c 0.143779,-0.324 0.146754,-0.28533 0.29438,-0.52965 0.150657,-0.31127 0.06002,-0.27995 0.353016,-0.53258 0.103619,-0.14221 0.452167,-0.199 0.597258,-0.25591 0.08296,-0.0286 0.242509,-0.006 0.304676,0.0216 0.06208,0.0284 0.240162,0.0837 0.261036,0.19736 0,0 0.06316,-0.13293 0.136463,0.0775 0.124368,-0.0284 0.414021,-0.0566 0.51765,0.0289 0.06209,0.0853 0.114729,0.19442 0.114729,0.19442 l 0.0651,0.16425 c 0.12435,0.0282 0.238858,0.0146 0.321755,0.15676 0.175465,0.15464 0.171873,0.50561 0.07389,0.5098 l -0.0085,0.0813 c 0.233981,-0.24114 0.276557,0.34546 0.179911,0.66167 -0.02088,0.25602 -0.273335,0.25554 -0.344859,0.46296 l 0.01032,0.0181 c -0.04139,0.1138 -0.05445,0.28605 -0.11679,0.37139 -0.06218,0.0854 -0.07095,0.10452 -0.195861,0.17227 -0.102788,0.0567 -0.19374,0.0387 -0.276637,0.12407 -0.314594,0.0446 -0.510741,0.0403 -0.84233,-0.0166 -0.16582,-0.0569 -0.329603,-0.11993 -0.453954,-0.26215 -0.528925,-0.76769 -0.658293,-0.62442 -0.658293,-0.62442 -0.206271,0.0408 -0.198639,-0.057 -0.426823,0.16799 l -0.270039,-0.37777 c 0,0 -0.103661,-0.10101 0,0 l -0.134636,-0.1577 c 0,0 0.0414,0.0281 0,0 l 0.272711,-0.44768"
        class="st4"
        id="UBERON_0000074"
-       title="glomerulus"
        inkscape:connector-curvature="0"
        style="fill:none;fill-opacity:1;stroke-width:0.99598545"
        sodipodi:nodetypes="ccccccccccccccccsccccccccccc">
@@ -420,15 +419,28 @@
       </g>
     </g>
     <g
-        id="link"
-        title="glomerulus"
-        inkscape:connector-curvature="0"
-        style="fill:none;fill-opacity:1;stroke-width:0.99598545">
+       id="link_glomerulus"
+       link="glomerulus"
+       inkscape:connector-curvature="0"
+       style="fill:none;fill-opacity:1;stroke-width:0.99598545"
+       transform="matrix(1,0,0,-1,0,322.87978)">
       <path
-          style="opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#000099;stroke-width:0.62336016;stroke-miterlimit:4.4000001;stroke-dasharray:none;stroke-opacity:1"
-          d="m 89.859421,158.71413 h 8.161345 v 5.45152 h -8.161345 z"
-          id="rect884"
-          inkscape:connector-curvature="0" />
+         style="opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#000099;stroke-width:0.62336016;stroke-miterlimit:4.4000001;stroke-dasharray:none;stroke-opacity:1"
+         d="m 89.859421,158.71413 h 8.161345 v 5.45152 h -8.161345 z"
+         id="rect884"
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       transform="matrix(1.0295946,0,0,-1.4429765,-27.021204,351.71671)"
+       style="fill:none;fill-opacity:1;stroke-width:0.99598545"
+       inkscape:connector-curvature="0"
+       link="glomerulus"
+       id="g81">
+      <path
+         inkscape:connector-curvature="0"
+         id="path79"
+         d="m 89.859421,158.71413 h 8.161345 v 5.45152 h -8.161345 z"
+         style="opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#000099;stroke-width:0.62336016;stroke-miterlimit:4.4000001;stroke-dasharray:none;stroke-opacity:1" />
     </g>
   </g>
 </svg>
