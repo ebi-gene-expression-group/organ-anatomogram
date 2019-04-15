@@ -85,7 +85,6 @@ class AnatomogramDemo extends React.Component {
     this.setState({
       showIds: [...new Set(id.concat(this.state.showIds))]
     })
-    console.log(`initshowIDs`,id,  [...new Set(id.concat(this.state.showIds))])
   }
 
   _clearSelectIds() {
