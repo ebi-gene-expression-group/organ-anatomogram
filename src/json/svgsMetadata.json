@@ -1,5 +1,16 @@
 [
   {
+    "filename": "kidney.duct.svg",
+    "species": "kidney",
+    "view": "duct",
+    "parent": "nephron",
+    "ids": [
+      "CL_0002201",
+      "CL_1001431",
+      "CL_0005011"
+    ]
+  },
+  {
     "filename": "kidney.kidney.svg",
     "species": "kidney",
     "view": "kidney",
@@ -38,6 +49,7 @@
     "view": "nephron",
     "ids": [
       "link_glomerulus",
+      "link_duct",
       "UBERON_0000074",
       "UBERON_0001228",
       "UBERON_0001287",
