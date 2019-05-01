@@ -419,8 +419,8 @@
       </g>
     </g>
     <g
-       id="link_glomerulus"
-       link="glomerulus"
+       id="link_duct"
+       link="duct"
        inkscape:connector-curvature="0"
        style="fill:none;fill-opacity:1;stroke-width:0.99598545"
        transform="matrix(1,0,0,-1,0,322.87978)">
@@ -435,7 +435,7 @@
        style="fill:none;fill-opacity:1;stroke-width:0.99598545"
        inkscape:connector-curvature="0"
        link="glomerulus"
-       id="g81">
+       id="link_glomerulus">
       <path
          inkscape:connector-curvature="0"
          id="path79"
