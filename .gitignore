@@ -64,3 +64,5 @@ typings/
 
 # Build files
 lib/*
+
+**/.DS_Store
