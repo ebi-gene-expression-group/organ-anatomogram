@@ -30,11 +30,11 @@ const IconImg = styled.img`
   }
 `
 
-const Switcher = ({atlasUrl, species, parentView, selectedView, onChangeView}) =>
+const Switcher = ({atlasUrl, species, parentView, selectedView, organs, onChangeView}) =>
 
   <IconWrapperDiv>
     {
-      species === `kidney` ?
+      organs.includes(species) ?
         parentView && <IconImg
           key={parentView}
           onClick={() => onChangeView(species, parentView)}
@@ -55,7 +55,8 @@ Switcher.propTypes = {
   species: PropTypes.string.isRequired,
   selectedView: PropTypes.string,
   onChangeView: PropTypes.func.isRequired,
-  parentView: PropTypes.string
+  parentView: PropTypes.string,
+  organs: PropTypes.arrayOf(PropTypes.string).isRequired
 }
 
 Switcher.defaultProps = {
