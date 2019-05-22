@@ -44,8 +44,8 @@ class AnatomogramDemo extends React.Component {
     this._handleCheckboxOnChange = this._handleCheckboxOnChange.bind(this)
     this._handleOnClick = this._handleOnClick.bind(this)
     this._addRemoveFromSelectIds = this._addRemoveFromSelectIds.bind(this)
-    this._clearSelectIds = this._clearSelectIds.bind(this)
-    this._initShowIds = this._initShowIds.bind(this)
+    this._clearSelectedIds = this._clearSelectedIds.bind(this)
+    this._showLinkBoxIds = this._showLinkBoxIds.bind(this)
 
   }
 
@@ -81,13 +81,13 @@ class AnatomogramDemo extends React.Component {
     })
   }
 
-  _initShowIds(id){
+  _showLinkBoxIds(id){
     this.setState({
       showIds: [...new Set(id.concat(this.state.showIds))]
     })
   }
 
-  _clearSelectIds() {
+  _clearSelectedIds() {
     this.setState({
       showIds: [],
       selectIds: [],
@@ -116,9 +116,9 @@ class AnatomogramDemo extends React.Component {
               highlightIds={this.state.highlightIds}
               selectIds={this.state.selectIds}
               selectAllIds={this.state.selectAllIds}
-              clearSelectIds={this._clearSelectIds}
+              clearSelectedIds={this._clearSelectedIds}
               onClick={this._addRemoveFromSelectIds}
-              initShowIds={this._initShowIds}/>
+              showLinkBoxIds={this._showLinkBoxIds}/>
           </div>
 
           <div className={`small-8 columns`}>

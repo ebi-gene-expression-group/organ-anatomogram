@@ -30,7 +30,7 @@ class Anatomogram extends React.Component {
       selectedView: anatomogramView,
       parentView: getParentView(species, anatomogramView)
     })
-    this.props.clearSelectIds()
+    this.props.clearSelectedIds()
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -45,20 +45,22 @@ class Anatomogram extends React.Component {
 
   render() {
     const { parentView, selectedView } = this.state
+    const { atlasUrl, species, showLinkBoxIds, organs } = this.props
     return (
-      supportedSpecies.includes(this.props.species) &&
+      supportedSpecies.includes(species) &&
         <div>
           <Switcher
-            atlasUrl={this.props.atlasUrl}
-            species={this.props.species}
+            atlasUrl={atlasUrl}
+            species={species}
             parentView={parentView}
             selectedView={selectedView}
+            organs={organs}
             onChangeView={this._switchAnatomogramView} />
 
           <AnatomogramSvg
-            atlasUrl={this.props.atlasUrl}
+            atlasUrl={atlasUrl}
             {...this.props}
-            initShowIds={this.props.initShowIds}
+            showLinkBoxIds={showLinkBoxIds}
             onChangeView={this._switchAnatomogramView}
             selectedView={selectedView} />
         </div>
@@ -69,8 +71,8 @@ class Anatomogram extends React.Component {
 Anatomogram.propTypes = {
   atlasUrl: PropTypes.string,
   species: PropTypes.string.isRequired,
-  clearSelectIds: PropTypes.func.isRequired,
-  initShowIds: PropTypes.func.isRequired
+  clearSelectedIds: PropTypes.func.isRequired,
+  showLinkBoxIds: PropTypes.func.isRequired
 }
 
 Anatomogram.defaultProps = {

@@ -25,7 +25,6 @@ const idsWithMarkupAccordingToCurrentColoringScheme = ({
   selectOpacity}) => {
   const uniqueShowIds = arrayDifference(showIds, [...highlightIds, ...selectIds, ...selectAllIds])
   const uniqueHighlightIds = arrayDifference(highlightIds, [...selectIds, ...selectAllIds])
-console.log(`uniqueShowIds`, uniqueShowIds)
   //Given an element and its ids, we take the first element of this array having one of the ids
   return [].concat(
     selectIds.length !== 0 ?
