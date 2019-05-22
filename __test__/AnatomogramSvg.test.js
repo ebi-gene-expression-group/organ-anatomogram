@@ -12,6 +12,7 @@ describe(`AnatomogramSvg`, () => {
         onClick={jest.fn()}
         onMouseOut={jest.fn()}
         onMouseOver={jest.fn()}
+        showLinkBoxIds={jest.fn()}
         species={`mus_musculus`}
       />)
     ).toMatchSnapshot()
@@ -25,6 +26,7 @@ describe(`AnatomogramSvg`, () => {
         onClick={jest.fn()}
         onMouseOut={jest.fn()}
         onMouseOver={jest.fn()}
+        showLinkBoxIds={jest.fn()}
         species={`ovis_aries`}
       />)
     ).toMatchSnapshot()
@@ -45,6 +47,7 @@ describe(`AnatomogramSvg`, () => {
       onInjected={onInjectedSpy}
       onMouseOut={jest.fn()}
       onMouseOver={jest.fn()}
+      showLinkBoxIds={jest.fn()}
       species={`mus_musculus`}
     />)
   })
