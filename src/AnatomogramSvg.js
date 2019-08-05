@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import ReactSVG from 'react-svg'
 
 import {groupBy} from 'lodash'
+import svgsMetadata from './json/svgsMetadata.json'
 
 const groupIntoPairs = (arr, f) => Object.entries(groupBy(arr, f))
 
@@ -55,7 +56,7 @@ const registerEvent = (element, eventType, elementMarkup, callback) => {
 }
 
 
-const initialiseSvgElements = (getSvgElementById, {idsWithMarkup, species, onMouseOver, onMouseOut, onClick, onChangeView, selectIds}) => {
+const initialiseSvgElements = (getSvgElementById, {idsWithMarkup, species, selectedView, onMouseOver, onMouseOut, onClick, onChangeView, selectIds}) => {
   //More than one id can correspond to an element - see the svg "use" elements
 
   groupIntoPairs(
@@ -71,16 +72,17 @@ const initialiseSvgElements = (getSvgElementById, {idsWithMarkup, species, onMou
       const ids = a[1].map(t => t[1])
       //Given an element and its ids, we take the first element of the idsWithMarkup array that is one of the ids
       const markupNormalAndUnderFocus = idsWithMarkup.find(m => ids.includes(m.id))
+      const svgMetadata = svgsMetadata.filter((svgMetadata) => svgMetadata.view === selectedView)[0]
 
       hasLink && markupNormalAndUnderFocus.markupLink ?
         paintSvgElement(element, markupNormalAndUnderFocus.markupLink) :
-        paintSvgElement(element, markupNormalAndUnderFocus.markupNormal)
+        paintSvgElement(element, markupNormalAndUnderFocus.markupNormal(svgMetadata))
 
       registerEvent(element, `mouseover`, markupNormalAndUnderFocus.markupUnderFocus, onMouseOver.bind(this, ids))
 
       hasLink && markupNormalAndUnderFocus.markupLink ?
         registerEvent(element, `mouseout`, markupNormalAndUnderFocus.markupLink, onMouseOut.bind(this, ids)) :
-        registerEvent(element, `mouseout`, markupNormalAndUnderFocus.markupNormal, onMouseOut.bind(this, ids))
+        registerEvent(element, `mouseout`, markupNormalAndUnderFocus.markupNormal(svgMetadata), onMouseOut.bind(this, ids))
 
       hasLink && markupNormalAndUnderFocus.onClick && selectIds.length !== 0 ?
         registerEvent(element, `click`, onChangeView(species, element.attributes.link.value), onClick.bind(this, ids)) :
