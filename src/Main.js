@@ -11,6 +11,13 @@ const arrayDifference = (arr1, arr2) =>
 
 const elementMarkup = (colour, opacity) => ({fill: colour, opacity: opacity})
 
+const paintInitialSvgElement = (id, svgMetadata) => {
+  const colour =  svgMetadata.colours ?
+    svgMetadata.colours[svgMetadata.ids.findIndex(elementid => elementid === id)] :
+    `grey`
+  return ({fill: colour, opacity: 1.0})
+}
+
 const idsWithMarkupAccordingToCurrentColoringScheme = ({
   showIds,
   linkColour,
@@ -19,7 +26,7 @@ const idsWithMarkupAccordingToCurrentColoringScheme = ({
   highlightIds,
   highlightColour,
   highlightOpacity,
-  selectIds, 
+  selectIds,
   selectAllIds,
   selectColour,
   selectOpacity}) => {
@@ -30,24 +37,24 @@ const idsWithMarkupAccordingToCurrentColoringScheme = ({
     selectIds.length !== 0 ?
       selectIds.map(id => ({
         id,
-        markupNormal: elementMarkup(selectColour, selectOpacity),
+        markupNormal: () => elementMarkup(selectColour, selectOpacity),
         markupUnderFocus: elementMarkup(selectColour, selectOpacity+0.2),
         onClick: showIds=[]
       })) :
       selectAllIds.map(id => ({
         id,
-        markupNormal: elementMarkup(selectColour, selectOpacity),
+        markupNormal: () => elementMarkup(selectColour, selectOpacity),
         markupUnderFocus: elementMarkup(selectColour, selectOpacity+0.2),
         onClick: showIds=[]
       })),
     uniqueHighlightIds.map(id => ({
       id,
-      markupNormal: elementMarkup(highlightColour, highlightOpacity),
+      markupNormal: () => elementMarkup(highlightColour, highlightOpacity),
       markupUnderFocus: elementMarkup(highlightColour, highlightOpacity+0.2)
     })),
     uniqueShowIds.map(id => ({
       id,
-      markupNormal: elementMarkup(showColour, showOpacity),
+      markupNormal: (svgMetadata) => paintInitialSvgElement(id, svgMetadata),
       markupUnderFocus: elementMarkup(highlightColour, highlightOpacity+0.2),
       markupLink: elementMarkup(linkColour, showOpacity)
     })),
@@ -64,8 +71,8 @@ const addColoringScheme  = compose(
     highlightColour: `red`,
     selectColour: `purple`,
     showOpacity: 0.4,
-    highlightOpacity: 0.4,
-    selectOpacity: 0.4
+    highlightOpacity: 1.0,
+    selectOpacity: 1.0
   }),
   withPropsOnChange(negate(isEqual),
     props => ({idsWithMarkup: idsWithMarkupAccordingToCurrentColoringScheme(props)})
