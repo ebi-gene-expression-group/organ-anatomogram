@@ -580,6 +580,57 @@
     ]
   },
   {
+    "filename": "pancreas.acinus.svg",
+    "species": "pancreas",
+    "view": "acinus",
+    "parent": "pancreas",
+    "ids": [
+      "CL_0000173",
+      "CL_0000171",
+      "CL_0000169",
+      "CL_0002275_1",
+      "CL_0005019",
+      "CL_0002410",
+      "CL_0000622"
+    ],
+    "colours": [
+      "#916f6f",
+      "#668000",
+      "#668000",
+      "#916f6f",
+      "#668000",
+      "#916f6f",
+      "#668000"
+    ]
+  },
+  {
+    "filename": "pancreas.pancreas.svg",
+    "species": "pancreas",
+    "view": "pancreas",
+    "ids": [
+      "UBERON_0001069",
+      "UBERON_0001151",
+      "UBERON_0001150",
+      "UBERON_0001263",
+      "UBERON_0000006",
+      "UBERON_0004913",
+      "UBERON_0001174",
+      "UBERON_0007329",
+      "link_acinus"
+    ],
+    "colours": [
+      "#916f6f",
+      "#668000",
+      "#668000",
+      "#916f6f",
+      "#668000",
+      "#916f6f",
+      "#668000",
+      "#916f6f",
+      "#668000"
+    ]
+  },
+  {
     "filename": "papio_anubis.svg",
     "species": "papio_anubis",
     "view": "",
