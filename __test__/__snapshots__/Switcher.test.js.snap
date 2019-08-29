@@ -137,6 +137,23 @@ exports[`Anatomogram switcher matches snapshot for oryza_sativa 1`] = `
 </div>
 `;
 
+exports[`Anatomogram switcher matches snapshot for pancreas 1`] = `
+<div
+  className="sc-bdVaJa kxhnvo"
+>
+  <img
+    className="sc-bwzfXH fKEuao"
+    onClick={[Function]}
+    src="https://www.ebi.ac.uk/gxa/test-file-stub.svg"
+  />
+  <img
+    className="sc-bwzfXH fKEuao"
+    onClick={[Function]}
+    src="https://www.ebi.ac.uk/gxa/test-file-stub.svg"
+  />
+</div>
+`;
+
 exports[`Anatomogram switcher matches snapshot for papio_anubis 1`] = `
 <div
   className="sc-bdVaJa kxhnvo"
