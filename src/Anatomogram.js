@@ -8,7 +8,6 @@ import {getDefaultView, getParentView, supportedSpecies} from './Assets'
 class Anatomogram extends React.Component {
   constructor(props) {
     super(props)
-
     this.state = {
       selectedView: getDefaultView(props.species),
       parentView: getParentView(props.species, getDefaultView(props.species))
@@ -20,7 +19,7 @@ class Anatomogram extends React.Component {
     if (this.props.species !== prevProps.species) {
       this.setState({
         selectedView: getDefaultView(this.props.species),
-        parentView: getParentView(getDefaultView(this.props.species))
+        parentView: getParentView(this.props.species, getDefaultView(this.props.species))
       })
     }
   }
@@ -72,7 +71,8 @@ Anatomogram.propTypes = {
   atlasUrl: PropTypes.string,
   species: PropTypes.string.isRequired,
   clearSelectedIds: PropTypes.func.isRequired,
-  showLinkBoxIds: PropTypes.func.isRequired
+  showLinkBoxIds: PropTypes.func.isRequired,
+  organs: PropTypes.arrayOf(String).isRequired
 }
 
 Anatomogram.defaultProps = {
