@@ -617,6 +617,101 @@
     ]
   },
   {
+    "filename": "lung.lung.svg",
+    "species": "lung",
+    "view": "lung",
+    "ids": [
+      "UBERON_0002170",
+      "UBERON_0002174",
+      "UBERON_0002171",
+      "UBERON_0008952",
+      "UBERON_0008953",
+      "UBERON_0003126",
+      "UBERON_0002182",
+      "UBERON_0002183",
+      "UBERON_0002184",
+      "UBERON_0002186",
+      "UBERON_0002169"
+    ],
+    "colours": [
+      "#c0c0c0",
+      "#888888",
+      "#505050",
+      "#c0c0c0",
+      "#494949",
+      "#6e6e6e",
+      "#3e3e3e",
+      "#4D4D4D",
+      "#8f8f8f",
+      "#3e3e3e",
+      "#2b2b2b"
+    ]
+  },
+  {
+    "filename": "lung.alveoli_fin.svg",
+    "species": "lung",
+    "view": "alveoli_fin",
+    "parent": "lung",
+    "ids": [
+      "UBERON_0002299",
+      "UBERON_0002188",
+      "UBERON_0016405"
+    ],
+    "colours": [
+      "#949494",
+      "#bababa",
+      "#363636"
+    ]
+  },
+  {
+    "filename": "lung.alveoli_section.svg",
+    "species": "lung",
+    "view": "alveoli_section",
+    "parent": "alveoli_fin",
+    "ids": [
+      "CL_0002062",
+      "CL_0002063",
+      "UBERON_0003456",
+      "CL_0002138",
+      "CL_0001567",
+      "CL_0000669"
+    ],
+    "colours": [
+      "#4F4F4F",
+      "#7E7E7E",
+      "#BDBDBD",
+      "#3D3D3D",
+      "#ACACAC",
+      "#202020"
+    ]
+  },
+  {
+    "filename": "lung.airway.svg",
+    "species": "lung",
+    "view": "airway",
+    "parent": "lung",
+    "ids": [
+      "CL_0002633",
+      "CL_1000271",
+      "CL_0000158",
+      "UBERON_0011148",
+      "CL_0002370",
+      "UBERON_0003469",
+      "UBERON_0003476",
+      "CL_0002598"
+    ],
+    "colours": [
+      "#252525",
+      "#888888",
+      "#3D3D3D",
+      "#B9B9B9",
+      "#B7B7B7",
+      "#636363",
+      "#BEBEBE",
+      "#464646"
+    ]
+  },
+  {
     "filename": "pancreas.acinus.svg",
     "species": "pancreas",
     "view": "acinus",
