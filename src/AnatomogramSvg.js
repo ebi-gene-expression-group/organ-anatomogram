@@ -8,7 +8,7 @@ import {groupBy} from 'lodash'
 import svgsMetadata from './json/svgsMetadata.json'
 
 const groupIntoPairs = (arr, f) => Object.entries(groupBy(arr, f))
-
+let efoLayerGroup
 const getSvgElementById = (svgDomNode, showLinkBoxIds) => {
   const getEfoLayerGroup = (svgDomNode) => {
     const svgGroups = svgDomNode.getElementsByTagName(`g`)
@@ -19,22 +19,8 @@ const getSvgElementById = (svgDomNode, showLinkBoxIds) => {
     }
   }
 
-  const efoLayerGroup = getEfoLayerGroup(svgDomNode)
+  efoLayerGroup = getEfoLayerGroup(svgDomNode)
 
-  function _getSvgElementById(id) {
-    if (efoLayerGroup) {
-      for (let i = 0 ; i < efoLayerGroup.children.length ; i++) {
-        if (efoLayerGroup.children[i].id === id ) {
-          if (efoLayerGroup.children[i].attributes[`xlink:href`]) {
-            return _getSvgElementById(efoLayerGroup.children[i].attributes[`xlink:href`].value.substring(1))
-          }
-          else {
-            return efoLayerGroup.children[i]
-          }
-        }
-      }
-    }
-  }
   //Find link objects in svg used for transition and pass ids to showLinkBoxIds as props to show them as initialization
   Array.from(efoLayerGroup.children).filter(path =>
     path.attributes.hasOwnProperty(`link`))[0] &&
@@ -45,10 +31,24 @@ const getSvgElementById = (svgDomNode, showLinkBoxIds) => {
   return _getSvgElementById
 }
 
+const _getSvgElementById = id => {
+  if (efoLayerGroup) {
+    for (let i = 0 ; i < efoLayerGroup.children.length ; i++) {
+      if (efoLayerGroup.children[i].id === id ) {
+        if (efoLayerGroup.children[i].attributes[`xlink:href`]) {
+          return _getSvgElementById(efoLayerGroup.children[i].attributes[`xlink:href`].value.substring(1))
+        }
+        else {
+          return efoLayerGroup.children[i]
+        }
+      }
+    }
+  }
+}
+
 const paintSvgElement = (element, elementMarkup) => element && elementMarkup && Object.assign(element.style, elementMarkup)
 
 const registerEvent = (element, eventType, elementMarkup, callback) => {
-
   element && element.addEventListener(eventType, () => {
     paintSvgElement(element, elementMarkup)
     callback()
@@ -58,7 +58,6 @@ const registerEvent = (element, eventType, elementMarkup, callback) => {
 
 const initialiseSvgElements = (getSvgElementById, {idsWithMarkup, species, selectedView, onMouseOver, onMouseOut, onClick, onChangeView, selectIds}) => {
   //More than one id can correspond to an element - see the svg "use" elements
-
   groupIntoPairs(
     idsWithMarkup
       .map(e=>e.id)
@@ -69,24 +68,47 @@ const initialiseSvgElements = (getSvgElementById, {idsWithMarkup, species, selec
     .forEach(a => {
       const element = a[1][0][0]
       const hasLink = element && element.attributes.hasOwnProperty(`link`)
+      const hasOverlap = element && element.attributes.hasOwnProperty(`overlap`)
       const ids = a[1].map(t => t[1])
       //Given an element and its ids, we take the first element of the idsWithMarkup array that is one of the ids
       const markupNormalAndUnderFocus = idsWithMarkup.find(m => ids.includes(m.id))
       const svgMetadata = svgsMetadata.filter((svgMetadata) => svgMetadata.view === selectedView)[0]
 
+      const registerEventWithOverlap = (element, eventType, elementMarkup, callback) => {
+        const overlapId = element.attributes[`overlap`].value
+        const overlapElement = _getSvgElementById(overlapId)
+        element && element.addEventListener(eventType, () => {
+          if(!selectIds.includes(overlapId)) {
+            eventType === `mouseout` ?
+              paintSvgElement(overlapElement, markupNormalAndUnderFocus.markupNormal(svgMetadata, overlapId)) :
+              paintSvgElement(overlapElement, elementMarkup)
+          }
+          paintSvgElement(element, elementMarkup)
+
+          callback()
+        })
+      }
+
       hasLink && markupNormalAndUnderFocus.markupLink ?
         paintSvgElement(element, markupNormalAndUnderFocus.markupLink) :
         paintSvgElement(element, markupNormalAndUnderFocus.markupNormal(svgMetadata))
 
-      registerEvent(element, `mouseover`, markupNormalAndUnderFocus.markupUnderFocus, onMouseOver.bind(this, ids))
+      if (hasOverlap) {
+        registerEventWithOverlap(element, `mouseout`, markupNormalAndUnderFocus.markupNormal(svgMetadata), onMouseOut.bind(this, ids))
+        registerEventWithOverlap(element, `mouseover`, markupNormalAndUnderFocus.markupUnderFocus, onMouseOver.bind(this, ids))
+        registerEventWithOverlap(element, `click`, markupNormalAndUnderFocus.onClick, onClick.bind(this, ids))
 
-      hasLink && markupNormalAndUnderFocus.markupLink ?
-        registerEvent(element, `mouseout`, markupNormalAndUnderFocus.markupLink, onMouseOut.bind(this, ids)) :
-        registerEvent(element, `mouseout`, markupNormalAndUnderFocus.markupNormal(svgMetadata), onMouseOut.bind(this, ids))
+      } else {
+        registerEvent(element, `mouseover`, markupNormalAndUnderFocus.markupUnderFocus, onMouseOver.bind(this, ids))
 
-      hasLink && markupNormalAndUnderFocus.onClick && selectIds.length !== 0 ?
-        registerEvent(element, `click`, onChangeView(species, element.attributes.link.value), onClick.bind(this, ids)) :
-        registerEvent(element, `click`, markupNormalAndUnderFocus.onClick, onClick.bind(this, ids))
+        hasLink && markupNormalAndUnderFocus.markupLink ?
+          registerEvent(element, `mouseout`, markupNormalAndUnderFocus.markupLink, onMouseOut.bind(this, ids)) :
+          registerEvent(element, `mouseout`, markupNormalAndUnderFocus.markupNormal(svgMetadata), onMouseOut.bind(this, ids))
+
+        hasLink && markupNormalAndUnderFocus.onClick && selectIds.length !== 0 ?
+          registerEvent(element, `click`, onChangeView(species, element.attributes.link.value), onClick.bind(this, ids)) :
+          registerEvent(element, `click`, markupNormalAndUnderFocus.onClick, onClick.bind(this, ids))
+      }
     })
 }
 
