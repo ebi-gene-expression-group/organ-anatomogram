@@ -50,11 +50,13 @@ const idsWithMarkupAccordingToCurrentColoringScheme = ({
     uniqueHighlightIds.map(id => ({
       id,
       markupNormal: () => elementMarkup(highlightColour, highlightOpacity),
-      markupUnderFocus: elementMarkup(highlightColour, highlightOpacity+0.2)
+      markupUnderFocus: elementMarkup(highlightColour, highlightOpacity+0.2),
     })),
     uniqueShowIds.map(id => ({
       id,
-      markupNormal: (svgMetadata) => paintInitialSvgElement(id, svgMetadata),
+      markupNormal: (svgMetadata, overlapId) => overlapId ?
+        paintInitialSvgElement(overlapId, svgMetadata) :
+        paintInitialSvgElement(id, svgMetadata),
       markupUnderFocus: elementMarkup(highlightColour, highlightOpacity+0.2),
       markupLink: elementMarkup(linkColour, showOpacity)
     })),
