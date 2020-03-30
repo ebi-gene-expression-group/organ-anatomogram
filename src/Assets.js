@@ -39,7 +39,8 @@ const getDefaultView = (species) => {
 
 const getParentView = (species, view) => {
   if (supportedSpecies.includes(species)) {
-    return svgsMetadata.filter(svgMetadata => svgMetadata.view === view)[0].parent || null
+    let parentPath = svgsMetadata.filter(svgMetadata => svgMetadata.view === view)[0]
+    return parentPath ? parentPath.parent : null
   }
 }
 
