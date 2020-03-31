@@ -5,7 +5,6 @@ exports[`Anatomogram should render for a supported species 1`] = `
   <Switcher
     atlasUrl="https://www.ebi.ac.uk/gxa/"
     onChangeView={[Function]}
-    parentView={null}
     selectedView="male"
     species="mus_musculus"
   />

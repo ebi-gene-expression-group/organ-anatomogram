@@ -86,6 +86,50 @@ exports[`Anatomogram switcher matches snapshot for kidney 1`] = `
 />
 `;
 
+exports[`Anatomogram switcher matches snapshot for liver 1`] = `
+<div
+  className="sc-bdVaJa kxhnvo"
+>
+  <img
+    className="sc-bwzfXH fKEuao"
+    onClick={[Function]}
+    src="https://www.ebi.ac.uk/gxa/test-file-stub.svg"
+  />
+  <img
+    className="sc-bwzfXH fKEuao"
+    onClick={[Function]}
+    src="https://www.ebi.ac.uk/gxa/test-file-stub.svg"
+  />
+</div>
+`;
+
+exports[`Anatomogram switcher matches snapshot for lung 1`] = `
+<div
+  className="sc-bdVaJa kxhnvo"
+>
+  <img
+    className="sc-bwzfXH fKEuao"
+    onClick={[Function]}
+    src="https://www.ebi.ac.uk/gxa/test-file-stub.svg"
+  />
+  <img
+    className="sc-bwzfXH fKEuao"
+    onClick={[Function]}
+    src="https://www.ebi.ac.uk/gxa/test-file-stub.svg"
+  />
+  <img
+    className="sc-bwzfXH fKEuao"
+    onClick={[Function]}
+    src="https://www.ebi.ac.uk/gxa/test-file-stub.svg"
+  />
+  <img
+    className="sc-bwzfXH fKEuao"
+    onClick={[Function]}
+    src="https://www.ebi.ac.uk/gxa/test-file-stub.svg"
+  />
+</div>
+`;
+
 exports[`Anatomogram switcher matches snapshot for macaca_mulatta 1`] = `
 <div
   className="sc-bdVaJa kxhnvo"
