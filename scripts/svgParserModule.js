@@ -20,8 +20,14 @@ module.exports = (filename, svgData) => {
     }
   })
 
-  if (svgObj[`${attrPrefix}viewBox`].split(/\s+/)[2] !== svgObj[`${attrPrefix}width`].toString() ||
-      svgObj[`${attrPrefix}viewBox`].split(/\s+/)[3] !== svgObj[`${attrPrefix}height`].toString()) {
+
+
+  if ((svgObj[`${attrPrefix}viewBox`].split(/\s+/)[2] !== svgObj[`${attrPrefix}width`].toString() &&
+        svgObj[`${attrPrefix}viewBox`].split(/\s+/)[2] !== svgObj[`${attrPrefix}width`].toString().slice(0, -2))
+    ||
+    (svgObj[`${attrPrefix}viewBox`].split(/\s+/)[3] !== svgObj[`${attrPrefix}height`].toString() &&
+      svgObj[`${attrPrefix}viewBox`].split(/\s+/)[3] !== svgObj[`${attrPrefix}height`].toString().slice(0, -2))
+  ) {
     throw new Error(`${filename}: viewBox does not match width/height`)
   }
 
