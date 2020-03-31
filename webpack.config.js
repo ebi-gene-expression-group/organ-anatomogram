@@ -1,5 +1,5 @@
 const path = require(`path`)
-const CleanWebpackPlugin = require(`clean-webpack-plugin`)
+const { CleanWebpackPlugin } = require(`clean-webpack-plugin`)
 
 const commonPublicPath = `/dist/`
 const vendorsBundleName = `vendors`
@@ -10,13 +10,14 @@ module.exports = {
   },
 
   plugins: [
-    new CleanWebpackPlugin([`dist`])
+    new CleanWebpackPlugin()
   ],
 
   output: {
     library: `[name]`,
     filename: `[name].bundle.js`,
-    publicPath: commonPublicPath
+    publicPath: commonPublicPath,
+    devtoolNamespace: `firefox`
   },
 
   resolve: {
