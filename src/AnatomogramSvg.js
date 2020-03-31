@@ -72,7 +72,9 @@ const initialiseSvgElements = (getSvgElementById, {idsWithMarkup, species, selec
       const ids = a[1].map(t => t[1])
       //Given an element and its ids, we take the first element of the idsWithMarkup array that is one of the ids
       const markupNormalAndUnderFocus = idsWithMarkup.find(m => ids.includes(m.id))
-      const svgMetadata = svgsMetadata.filter((svgMetadata) => svgMetadata.view === selectedView)[0]
+      const svgMetadata = selectedView ?
+        svgsMetadata.filter((svgMetadata) => svgMetadata.view === selectedView)[0] :
+        svgsMetadata.filter((svgMetadata) => svgMetadata.species === species)[0]
 
       const registerEventWithOverlap = (element, eventType, elementMarkup, callback) => {
         const overlapId = element.attributes[`overlap`].value

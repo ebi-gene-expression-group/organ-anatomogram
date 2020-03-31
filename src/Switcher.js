@@ -43,7 +43,7 @@ const Switcher = ({atlasUrl, species, parentView, selectedView, organs, onChange
         getAnatomogramViews(species).map((view) =>
           <IconImg
             key={view}
-            onClick={() => onChangeView(view)}
+            onClick={() => onChangeView(species, view)}
             src={resolve(loadIcon(view, selectedView), atlasUrl).toString()} />
         )
     }
