@@ -146,7 +146,7 @@ AnatomogramSvg.propTypes = {
   selectedView: PropTypes.string,
   idsWithMarkup: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
-    markupNormal: PropTypes.object.isRequired,
+    markupNormal: PropTypes.func.isRequired,
     markupUnderFocus: PropTypes.object.isRequired
   })).isRequired,
   onMouseOver: PropTypes.func.isRequired,
