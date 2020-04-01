@@ -99,9 +99,9 @@ const definePropTypes = setPropTypes({
     markupNormal: PropTypes.object.isRequired,
     markupUnderFocus: PropTypes.object.isRequired
   })).isRequired,
-  onMouseOver: PropTypes.func,
-  onMouseOut: PropTypes.func,
-  onClick: PropTypes.func
+  onMouseOver: PropTypes.func.isRequired,
+  onMouseOut: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired
 })
 
 const defineDefaultProps = defaultProps({
