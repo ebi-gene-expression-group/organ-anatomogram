@@ -638,6 +638,58 @@
     ]
   },
   {
+    "filename": "placenta.placenta.svg",
+    "species": "placenta",
+    "view": "placenta",
+    "ids": [
+      "UBERON_0001296",
+      "UBERON_0000453",
+      "UBERON_0004027",
+      "UBERON_0000305",
+      "UBERON_0002066",
+      "UBERON_0001310",
+      "UBERON_0007106"
+    ],
+    "colours": [
+      "#afafaf",
+      "#4d4d4d",
+      "#b1b1b1",
+      "#464646",
+      "#414141",
+      "#757575",
+      "#828282"
+    ]
+  },
+  {
+    "filename": "placenta.cells.svg",
+    "species": "placenta",
+    "view": "cells",
+    "parent": "placenta",
+    "ids": [
+      "CL_2000002",
+      "EFO_0010710",
+      "CL_3000001",
+      "UBERON_0000371",
+      "UBERON_0000319",
+      "UBERON_0000426",
+      "EFO_0010712",
+      "EFO_0010711",
+      "CL_0002601",
+      "EFO_0010708"
+    ],
+    "colours": [
+      "#a4a4a4",
+      "#cecece",
+      "#cecece",
+      "#8d8d8d",
+      "#595959",
+      "#a4a4a4",
+      "#858585",
+      "#d7d7d7",
+      "#535353"
+    ]
+  },
+  {
     "filename": "liver.lobule.svg",
     "species": "liver",
     "view": "lobule",
