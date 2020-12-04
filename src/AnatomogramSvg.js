@@ -77,13 +77,14 @@ const initialiseSvgElements = (getSvgElementById, {idsWithMarkup, species, selec
         svgsMetadata.filter((svgMetadata) => svgMetadata.species === species)[0]
 
       const registerEventWithOverlap = (element, eventType, elementMarkup, callback) => {
-        const overlapId = element.attributes[`overlap`].value
-        const overlapElement = _getSvgElementById(overlapId)
+        const overlapIds = element.attributes[`overlap`].value.split(`,`)
+        const overlapElements = overlapIds.map(overlapId => _getSvgElementById(overlapId))
         element && element.addEventListener(eventType, () => {
-          if(!selectIds.includes(overlapId)) {
+          if(!selectIds.includes(overlapIds)) {
             eventType === `mouseout` ?
-              paintSvgElement(overlapElement, markupNormalAndUnderFocus.markupNormal(svgMetadata, overlapId)) :
-              paintSvgElement(overlapElement, elementMarkup)
+              overlapElements.every((overlapElement, idx) =>
+                paintSvgElement(overlapElement, markupNormalAndUnderFocus.markupNormal(svgMetadata, overlapIds[idx]))) :
+              overlapElements.every(overlapElement => paintSvgElement(overlapElement, elementMarkup))
           }
           paintSvgElement(element, elementMarkup)
 
