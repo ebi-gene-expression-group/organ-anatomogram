@@ -172,11 +172,6 @@ class AnatomogramDemo extends React.Component {
   }
 }
 
-AnatomogramDemo.propTypes = {
-  atlasUrl: PropTypes.string,
-  pathToResources: PropTypes.string
-}
-
 const render = function (options, target) {
   ReactDOM.render(<AnatomogramDemo {...options}/>, document.getElementById(target))
 }
