@@ -46,7 +46,7 @@ class Anatomogram extends React.Component {
 
   render() {
     const { parentView, selectedView } = this.state
-    const { atlasUrl, species, showLinkBoxIds, organs } = this.props
+    const { species, showLinkBoxIds } = this.props
     return (
       supportedSpecies.includes(species) &&
         <div>
@@ -67,15 +67,8 @@ class Anatomogram extends React.Component {
 }
 
 Anatomogram.propTypes = {
-  atlasUrl: PropTypes.string,
   species: PropTypes.string.isRequired,
-  clearSelectedIds: PropTypes.func.isRequired,
-  showLinkBoxIds: PropTypes.func.isRequired,
-  organs: PropTypes.arrayOf(String).isRequired
-}
-
-Anatomogram.defaultProps = {
-  atlasUrl: `https://www.ebi.ac.uk/gxa/`
+  showLinkBoxIds: PropTypes.func.isRequired
 }
 
 export default Anatomogram
