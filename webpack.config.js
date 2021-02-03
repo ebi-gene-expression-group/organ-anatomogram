@@ -52,16 +52,14 @@ module.exports = {
       {
         test: /\.(jpe?g|png|gif)$/i,
         use: [
-          { loader: `file-loader` },
+          `file-loader`,
           {
             loader: `image-webpack-loader`,
             options: {
-              query: {
-                bypassOnDebug: true,
-                mozjpeg: { progressive: true },
-                gifsicle: { interlaced: true },
-                optipng: { optimizationLevel: 7 }
-              }
+              bypassOnDebug: true,
+              mozjpeg: { progressive: true },
+              gifsicle: { interlaced: true },
+              optipng: { optimizationLevel: 7 }
             }
           }
         ]
