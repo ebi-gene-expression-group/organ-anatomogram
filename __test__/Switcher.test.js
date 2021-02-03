@@ -24,21 +24,21 @@ describe(`Anatomogram switcher`, () => {
 
   test(`should contain as many buttons as views are defined for a species apart from kidney`, function() {
     allSpecies.filter(species => species !== `kidney`).forEach((species) => {
-      expect(mount(<Switcher {...requiredProps} organs={[`kidney`]} species={species}/>).find(`img`)).toHaveLength(getAnatomogramViews(species).length)
+      expect(mount(<Switcher {...requiredProps} species={species}/>).find(`img`)).toHaveLength(getAnatomogramViews(species).length)
     })
   })
 
   test(`should contain a backward button for parent tissue parts for kidney species`, function() {
     const species = `kidney`
     allChildrenViews(species).forEach(view =>{
-      expect(mount(<Switcher {...requiredProps} organs={[`kidney`]} species={species} parentView={getParentView(species, view)}/>).find(`img`)).toHaveLength(1)
+      expect(mount(<Switcher {...requiredProps} species={species} parentView={getParentView(species, view)}/>).find(`img`)).toHaveLength(1)
     }
     )
   })
 
   test(`should respond to onClick events with the anatomogram view and corresponding species`, () => {
     const onButtonClick = jest.fn()
-    const wrapper = mount(<Switcher {...requiredProps} organs={[`kidney`]} species={`homo_sapiens`} onChangeView={onButtonClick}/>)
+    const wrapper = mount(<Switcher {...requiredProps} species={`homo_sapiens`} onChangeView={onButtonClick}/>)
     wrapper.find(`img`).first().simulate(`click`)
     wrapper.find(`img`).last().simulate(`click`)
     expect(onButtonClick.mock.calls.length).toBe(2)
@@ -48,7 +48,7 @@ describe(`Anatomogram switcher`, () => {
 
   allSpecies.forEach((species) => {
     test(`matches snapshot for ${species}`, () => {
-      const tree = renderer.create(<Switcher {...requiredProps} organs={[`kidney`]} species={species} selectedView={getDefaultView(species)}/>).toJSON()
+      const tree = renderer.create(<Switcher {...requiredProps} species={species} selectedView={getDefaultView(species)}/>).toJSON()
       expect(tree).toMatchSnapshot()
     })
   })
