@@ -51,11 +51,9 @@ class Anatomogram extends React.Component {
       supportedSpecies.includes(species) &&
         <div>
           <Switcher
-            atlasUrl={atlasUrl}
             species={species}
             parentView={parentView}
             selectedView={selectedView}
-            organs={organs}
             onChangeView={this._switchAnatomogramView} />
 
           <AnatomogramSvg
