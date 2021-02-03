@@ -7,7 +7,6 @@ describe(`AnatomogramSvg`, () => {
   test(`should render for a supported species`, () => {
     expect(
       shallow(<AnatomogramSvg
-        atlasUrl={``}
         idsWithMarkup={[]}
         onClick={jest.fn()}
         onMouseOut={jest.fn()}
@@ -21,7 +20,6 @@ describe(`AnatomogramSvg`, () => {
   test(`should not render for an unsupported species`, () => {
     expect(
       shallow(<AnatomogramSvg
-        atlasUrl={``}
         idsWithMarkup={[]}
         onClick={jest.fn()}
         onMouseOut={jest.fn()}
@@ -41,7 +39,6 @@ describe(`AnatomogramSvg`, () => {
     })
 
     mount(<AnatomogramSvg
-      atlasUrl={`https://www.ebi.ac.uk/gxa/`}
       idsWithMarkup={[]}
       onClick={jest.fn()}
       onInjected={onInjectedSpy}
