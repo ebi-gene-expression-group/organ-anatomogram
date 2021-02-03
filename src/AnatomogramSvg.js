@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import URI from 'urijs'
 import styled from 'styled-components'
 import ReactSVG from 'react-svg'
 
@@ -114,8 +113,8 @@ const initialiseSvgElements = (getSvgElementById, {idsWithMarkup, species, selec
     })
 }
 
-const loadSvg = (species, selectedView) => require(`./svg/${species}${selectedView ? `.${selectedView}` : ``}.svg`)
-const resolve = (uri, baseUrl) => URI(uri).is(`absolute`) ? URI(uri) : URI(uri, baseUrl)
+const loadSvg =
+  (species, selectedView) => require(`./svg/${species}${selectedView ? `.${selectedView}` : ``}.svg`).default
 
 const AnatomogramSvgWrapperDiv = styled.div`
   display: inline-block;
@@ -125,23 +124,25 @@ const AnatomogramSvgWrapperDiv = styled.div`
 
 // ReactSVG loads the SVG file asynchronously (hence the callback prop). We don’t use componentDidUpdate or
 // componentDidMount because they can’t guarantee that the SVG is already loaded when they’re run.
-const AnatomogramSvg = (props) =>
-  <AnatomogramSvgWrapperDiv>
-    <ReactSVG
-      onInjected={(error, svgDomNode) => {
-        if (error) {
-          console.log(`ReactSVG Error: ${error}`)
-        } else {
-          initialiseSvgElements(getSvgElementById(svgDomNode, props.showLinkBoxIds), props)
-        }
-        props.onInjected(error, svgDomNode)
-      }}
-      src={resolve(loadSvg(props.species, props.selectedView), props.atlasUrl).toString()}
-      svgStyle={{width: `100%`, height: `auto`, paddingLeft: props.selectedView ? `10px` : ``}} />
-  </AnatomogramSvgWrapperDiv>
+const AnatomogramSvg = (props) => {
+  return (
+    <AnatomogramSvgWrapperDiv>
+      <ReactSVG
+        onInjected={(error, svgDomNode) => {
+          if (error) {
+            console.log(`ReactSVG Error: ${error}`)
+          } else {
+            initialiseSvgElements(getSvgElementById(svgDomNode, props.showLinkBoxIds), props)
+          }
+          props.onInjected(error, svgDomNode)
+        }}
+        src={loadSvg(props.species, props.selectedView)}
+        svgStyle={{width: `100%`, height: `auto`, paddingLeft: props.selectedView ? `10px` : ``}} />
+    </AnatomogramSvgWrapperDiv>
+  )
+}
 
 AnatomogramSvg.propTypes = {
-  atlasUrl: PropTypes.string.isRequired,
   species: PropTypes.string.isRequired,
   selectedView: PropTypes.string,
   idsWithMarkup: PropTypes.arrayOf(PropTypes.shape({
