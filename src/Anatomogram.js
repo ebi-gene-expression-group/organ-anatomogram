@@ -27,9 +27,11 @@ class Anatomogram extends React.Component {
   _switchAnatomogramView(species, anatomogramView) {
     this.setState({
       selectedView: anatomogramView,
-      parentView: getParentView(species, anatomogramView)
+      parentView: getParentView(species, anatomogramView),
+      showIds: [],
+      selectIds: [],
+      highlightIds:[]
     })
-    this.props.clearSelectedIds()
   }
 
   static getDerivedStateFromProps(props, state) {
