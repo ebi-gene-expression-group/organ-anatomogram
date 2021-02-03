@@ -57,7 +57,6 @@ class Anatomogram extends React.Component {
             onChangeView={this._switchAnatomogramView} />
 
           <AnatomogramSvg
-            atlasUrl={atlasUrl}
             {...this.props}
             showLinkBoxIds={showLinkBoxIds}
             onChangeView={this._switchAnatomogramView}
