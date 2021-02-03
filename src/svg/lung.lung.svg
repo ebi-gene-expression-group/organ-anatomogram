@@ -256,7 +256,7 @@
          class="st8"
          inkscape:connector-curvature="0" /></g><g
        link="alveoli_fin"
-       id="Link_alveoli"
+       id="link_alveoli"
        transform="matrix(0.68189796,0,0,-0.79569622,252.65956,640.39797)"
        style="opacity:0.68999999;fill-opacity:1;stroke-width:7.69653988;stroke-miterlimit:4;stroke-dasharray:none"
        sodipodi:insensitive="true"><g
@@ -276,7 +276,7 @@
                  style="fill:none;fill-opacity:1;stroke:#0052db;stroke-width:5.7723999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
                  id="path1002"
                  inkscape:connector-curvature="0" /></g></g></g></g></g><g
-       id="Link_segmental_bronchus"
+       id="link_segmental_bronchus"
        link="airway"
        transform="matrix(0.30994936,0,0,0.30611616,271.77503,317.30676)"
        style="opacity:0.68999999;fill-opacity:1;stroke-width:18.40519905;stroke-miterlimit:4;stroke-dasharray:none"
