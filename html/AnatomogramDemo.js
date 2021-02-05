@@ -77,7 +77,7 @@ class AnatomogramDemo extends React.Component {
   _addRemoveFromSelectIds(ids) {
 
     this.setState({
-      selectIds: xor(this.state.selectIds, ids)
+      selectIds: ids
     })
   }
 

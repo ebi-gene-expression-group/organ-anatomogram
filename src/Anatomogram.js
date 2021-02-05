@@ -25,6 +25,7 @@ class Anatomogram extends React.Component {
   }
 
   _switchAnatomogramView(species, anatomogramView) {
+    this.props.onClick([])
     this.setState({
       selectedView: anatomogramView,
       parentView: getParentView(species, anatomogramView),
