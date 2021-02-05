@@ -88,7 +88,8 @@ const normaliseSpecies = mapProps(
 const addDefaultCallbacks = defaultProps({
   onMouseOver: () => {},
   onMouseOut: () => {},
-  onClick: () => {}
+  onClick: () => {},
+  afterSwitchView: () => {}
 })
 
 const definePropTypes = setPropTypes({
