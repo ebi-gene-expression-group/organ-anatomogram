@@ -32,7 +32,7 @@ class Anatomogram extends React.Component {
       showIds: [],
       selectIds: [],
       highlightIds:[]
-    })
+    }, this.props.afterSwitchView(species, anatomogramView))
   }
 
   static getDerivedStateFromProps(props, state) {
