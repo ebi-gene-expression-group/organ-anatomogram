@@ -33,7 +33,7 @@ const getAnatomogramViews = (species) => {
 
 const getDefaultView = (species) => {
   if (supportedSpecies.includes(species)) {
-    return getAnatomogramViews(species)[0] || null
+    return getAnatomogramViews(species).indexOf(species) >=0 ? species : getAnatomogramViews(species)[0] || null
   }
 }
 
