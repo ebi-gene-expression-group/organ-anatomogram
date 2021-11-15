@@ -36,13 +36,16 @@ render(options, target)
 Where `options` are the props passed as an object, and `target` is an ID of the DOM element that will contain the
 anatomogram.
 
-For example code, have a look at [the demo component](https://github.com/gxa/anatomogram/blob/master/html/AnatomogramDemo.js) and how we use it in [our Expression Atlas Heatmap](https://github.com/gxa/atlas-heatmap). If you want to see it in action, go to [an organism part experiment in Atlas](https://www.ebi.ac.uk/gxa/experiments/E-MTAB-513) or [a search that returns organism part experiments](https://www.ebi.ac.uk/gxa/search?geneQuery=[{%22value%22:%22zinc%20finger%22}]).
+For example code, have a look at [the demo component](https://github.com/gxa/anatomogram/blob/master/html/AnatomogramDemo.js) 
+and how we use it in [our Expression Atlas Heatmap](https://github.com/gxa/atlas-heatmap). 
+If you want to see it in action, go to [an organism part experiment in Atlas](https://www.ebi.ac.uk/gxa/experiments/E-MTAB-513) 
+or [a search that returns organism part experiments](https://www.ebi.ac.uk/gxa/search?geneQuery=[{%22value%22:%22zinc%20finger%22}]).
 
 ## Props
 
 | Name             | Type     | Default value  | Description                                                          |
 |------------------|----------|:--------------:|----------------------------------------------------------------------|
-| species          | string   |       -        | This is the only required attribute of the anatomogram               |
+| species          | string   |       -        | Required. This is the only props needed to be declared for testing. Specify the species or the organ shown in the page         |
 | showIds          | array    |       []       |                                                                      |
 | highlightIds     | array    |       []       |                                                                      |
 | selectIds        | array    |       []       |                                                                      |
@@ -52,9 +55,9 @@ For example code, have a look at [the demo component](https://github.com/gxa/ana
 | showOpacity      | number   | 0.4            |                                                                      |
 | highlightOpacity | number   | 0.4            |                                                                      |
 | selectOpacity    | number   | 0.4            |                                                                      |
-| onMouseOver      | function |   `() => {}`   | Callback invoked when the mouse is hovered on a tissue               |
-| onMouseOut       | function |   `() => {}`   | Callback invoked when the mouse is hovered off a tissue              |
-| onClick          | function |   `() => {}`   | Callback invoked when a tissue is clicked                            |
+| onMouseOver      | function |   `() => {}`   | Required, but with default value. Callback invoked when the mouse is hovered on a tissue     |
+| onMouseOut       | function |   `() => {}`   | Required, but with default value. Callback invoked when the mouse is hovered off a tissue    |
+| onClick          | function |   `() => {}`   | Required, but with default value. Callback invoked when a tissue is clicked                  |
 | onInjected       | function |   `() => {}`   | Callback invoked when SVG is injected                                |
 
 For a list of available species and IDs have a look at
@@ -106,6 +109,8 @@ adding new tissues or updating IDs in an existing anatomogram or adding a new SV
 Run `npm run parseSvgs` to parse the updated IDs. When you are finished run a local copy of the demo page:
 
 ```sh
+rm -rf node-modules
+npm install
 npx webpack-dev-server -d
 ```
 
