@@ -64,6 +64,7 @@
     "jest-environment-enzyme": "^7.1.2",
     "jest-enzyme": "^7.1.2",
     "react-test-renderer": "^16.14.0",
+    "url-loader": "^4.1.1",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.11.0"
