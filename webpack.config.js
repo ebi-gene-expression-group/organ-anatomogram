@@ -50,19 +50,14 @@ module.exports = {
         use: `babel-loader`
       },
       {
-        test: /\.(jpe?g|png|gif)$/i,
-        use: [
-          `file-loader`,
-          {
-            loader: `image-webpack-loader`,
-            options: {
-              bypassOnDebug: true,
-              mozjpeg: { progressive: true },
-              gifsicle: { interlaced: true },
-              optipng: { optimizationLevel: 7 }
-            }
+        test: /\.(png|jp(e*)g)$/,
+        use: [{
+          loader: 'url-loader',
+          options: {
+            limit: 8000, // Convert images < 8kb to base64 strings
+            name: 'img/[hash]-[name].[ext]'
           }
-        ]
+        }]
       },
       {
         test: /\.svg$/i,
